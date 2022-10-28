@@ -103,14 +103,12 @@ abstract class Empleado
         return $this->departamento;
     }
 
-    //******************funcion que calculara el sueldo. Se obligara a implementarlo en las tres clases ????????
     public function calcularSueldo()
     {
     }
 
-    //********************metodo que retorna los 4 atributos usando la tecnica de delegacion con getters ??????????
     public function obtenerDatos(): string
     {
-        return  'Datos: ' . $this->nif . ' / ' . $this->nombre . ' / ' . $this->edad . ' / ' . $this->departamento;
+        return  'Datos: ' . $this->getNif() . ' / ' . $this->getNombre() . ' / ' . $this->getEdad() . ' / ' . $this->getDepartamento();
     }
 }

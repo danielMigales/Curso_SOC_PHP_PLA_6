@@ -6,8 +6,6 @@ require_once('clases/empleado.php');
 
 use empleados\clases\Empleado;
 
-//*********************No se podran crear clases adicionales que hereden de esta ??????
-
 class EmpleadoFijo extends Empleado
 {
     //constantes salario base y complemento
@@ -48,11 +46,6 @@ class EmpleadoFijo extends Empleado
         $this->añoAlta = $añoAlta;
     }
 
-
-
-
-
-    //************funcion que calculara el sueldo. Se obligara a implementarlo en las tres clases ????????
     public function calcularSueldo(): int
     {
         parent::calcularSueldo();
@@ -62,9 +55,8 @@ class EmpleadoFijo extends Empleado
         return  $this->getSalarioBase() + $this->getComplemento() * $añosEmpresa;
     }
 
-    //***********metodo que retorna los 4 atributos usando la tecnica de delegacion con getters ?????????? y añadiendo el nuevo atributo
     public function obtenerDatos(): string
     {
-        return parent::obtenerDatos() . ' / ' . $this->añoAlta;
+        return parent::obtenerDatos() . ' / ' . $this->getAñoAlta();
     }
 }
