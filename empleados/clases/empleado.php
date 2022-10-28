@@ -1,42 +1,47 @@
 <?php
 
+namespace empleados\clases;
+
+use \Exception;
+
+//de esta clase no se podrra crear ninguna instancia
 abstract class Empleado
 {
     //atributos
     private string $nif;
-    private string $nombre;
+    private ?string $nombre = null;
     private int $edad;
     private string $departamento;
 
-    //constructor
+    //constructor que utiliza setters para informar los atributos
     public function __construct(string $nif, string $nombre, int $edad, string $departamento)
     {
         global $errores;
         $errores = '';
 
-        //asignacion con setters
+        //asignacion con delegacion setters
         $this->setNif($nif);
         $this->setNombre($nombre);
         $this->setEdad($edad);
         $this->setDepartamento($departamento);
 
-        //errores
+        //control errores
         if (!empty($errores)) {
             throw new Exception($errores);
         }
     }
 
-    //setters
+    //setters con validacion
     public function setNif(string $nif): void
     {
         global $errores;
 
         //validacion
         if (empty($nif)) {
+            //throw new Exception("Nif obligatorio<br>");
             $errores .= "Nif obligatorio<br>";
             return;
         }
-
         $this->nif = $nif;
     }
 
@@ -46,19 +51,19 @@ abstract class Empleado
 
         //validacion
         if (empty($nombre)) {
+            //throw new Exception("Nombre obligatorio<br>");
             $errores .= "Nombre obligatorio<br>";
             return;
         }
-
-        $this->nif = $nombre;
+        $this->nombre = $nombre;
     }
 
     public function setEdad(int $edad): void
     {
         global $errores;
-
         //validacion
         if (empty($edad)) {
+            //throw new Exception("Edad obligatoria<br>");
             $errores .= "Edad obligatoria<br>";
             return;
         }
@@ -68,9 +73,9 @@ abstract class Empleado
     public function setDepartamento(string $departamento): void
     {
         global $errores;
-
         //validacion
         if (empty($departamento)) {
+            //throw new Exception("Departamento obligatorio<br>");
             $errores .= "Departamento obligatorio<br>";
             return;
         }
@@ -88,7 +93,7 @@ abstract class Empleado
         return $this->nombre;
     }
 
-    public function getEdad(): string
+    public function getEdad(): int
     {
         return $this->edad;
     }
@@ -98,12 +103,14 @@ abstract class Empleado
         return $this->departamento;
     }
 
-
-    public function calculoSueldo(): void
+    //******************funcion que calculara el sueldo. Se obligara a implementarlo en las tres clases ????????
+    public function calcularSueldo()
     {
     }
 
-    public function obtenerDatos()
+    //********************metodo que retorna los 4 atributos usando la tecnica de delegacion con getters ??????????
+    public function obtenerDatos(): string
     {
+        return  'Datos: ' . $this->nif . ' / ' . $this->nombre . ' / ' . $this->edad . ' / ' . $this->departamento;
     }
 }
