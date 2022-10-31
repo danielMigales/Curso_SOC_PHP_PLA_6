@@ -6,7 +6,7 @@ require_once('clases/empleado.php');
 
 use empleados\clases\Empleado;
 
-class EmpleadoHoras extends Empleado
+final class EmpleadoHoras extends Empleado
 {
     //constantes salario base y complemento
     private static $precioxhora = 9.39;

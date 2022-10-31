@@ -6,7 +6,7 @@ require_once('clases/empleado.php');
 
 use empleados\clases\Empleado;
 
-class EmpleadoFijo extends Empleado
+final class EmpleadoFijo extends Empleado
 {
     //constantes salario base y complemento
     private static $salarioBase = 1091.13;
