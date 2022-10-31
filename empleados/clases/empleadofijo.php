@@ -48,7 +48,6 @@ class EmpleadoFijo extends Empleado
 
     public function calcularSueldo(): int
     {
-        parent::calcularSueldo();
         //sueldo = base + complemento * añosEmpresa
         $añoActual = 2022;
         $añosEmpresa = $añoActual - $this->añoAlta;

@@ -103,9 +103,7 @@ abstract class Empleado
         return $this->departamento;
     }
 
-    public function calcularSueldo()
-    {
-    }
+    abstract protected function calcularSueldo();
 
     public function obtenerDatos(): string
     {
